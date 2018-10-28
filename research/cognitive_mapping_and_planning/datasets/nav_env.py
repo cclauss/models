@@ -220,7 +220,7 @@ class GridWorld():
     """Based on the node orientation returns X, and Y axis. Used to sample the
     map in egocentric coordinate frame.
     """
-    if type(node) == tuple:
+    if isinstance(node, tuple):
       node = np.array([node])
     if perturb is None:
       perturb = np.zeros((node.shape[0], 4))

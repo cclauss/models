@@ -27,8 +27,7 @@ tfgan = tf.contrib.gan
 
 def _last_conv_layer(end_points):
   """"Returns the last convolutional layer from an endpoints dictionary."""
-  conv_list = [k if k[:4] == 'conv' else None for k in end_points.keys()]
-  conv_list.sort()
+  conv_list = sorted([k if k[:4] == 'conv' else None for k in end_points.keys()])
   return end_points[conv_list[-1]]
 
 

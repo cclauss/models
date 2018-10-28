@@ -142,7 +142,7 @@ def convert_and_zip(id_to_word, sequences, predictions):
 
 def recursive_length(item):
   """Recursively determine the total number of elements in nested list."""
-  if type(item) == list:
+  if isinstance(item, list):
     return sum(recursive_length(subitem) for subitem in item)
   else:
     return 1.

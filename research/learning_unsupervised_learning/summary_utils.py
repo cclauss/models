@@ -48,7 +48,7 @@ class LoggingFileWriter(tf.summary.FileWriter):
     super(LoggingFileWriter, self).__init__(logdir, **kwargs)
 
   def add_summary(self, summary, global_step):
-    if type(summary) != tf.Summary:
+    if not isinstance(summary, tf.Summary):
       summary_p = tf.Summary()
       summary_p.ParseFromString(summary)
       summary = summary_p

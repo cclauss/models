@@ -235,12 +235,11 @@ def write_shards(vocab, shardfiles):
     os.unlink(fh.name)
     fh.close()
 
-    coocs = [
+    coocs = sorted([
         shard_cooc_fmt.unpack_from(buf, off)
-        for off in range(0, len(buf), shard_cooc_fmt.size)]
+        for off in range(0, len(buf), shard_cooc_fmt.size)])
 
     # Sort and merge co-occurrences for the same pairs.
-    coocs.sort()
 
     if coocs:
       current_pos = 0

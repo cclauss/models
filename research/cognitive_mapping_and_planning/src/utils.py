@@ -74,8 +74,8 @@ class Foo(object):
 def dict_equal(dict1, dict2):
   assert(set(dict1.keys()) == set(dict2.keys())), "Sets of keys between 2 dictionaries are different."
   for k in dict1.keys():
-    assert(type(dict1[k]) == type(dict2[k])), "Type of key '{:s}' if different.".format(k)
-    if type(dict1[k]) == np.ndarray:
+    assert(isinstance(dict1[k], type(dict2[k]))), "Type of key '{:s}' if different.".format(k)
+    if isinstance(dict1[k], np.ndarray):
       assert(dict1[k].dtype == dict2[k].dtype), "Numpy Type of key '{:s}' if different.".format(k)
       assert(np.allclose(dict1[k], dict2[k])), "Value for key '{:s}' do not match.".format(k)
     else:
@@ -109,7 +109,7 @@ def save_variables(pickle_file_name, var, info, overwrite = False):
   if fu.exists(pickle_file_name) and overwrite == False:
     raise Exception('{:s} exists and over write is false.'.format(pickle_file_name))
   # Construct the dictionary
-  assert(type(var) == list); assert(type(info) == list);
+  assert(isinstance(var, list)); assert(isinstance(info, list));
   d = {}
   for i in xrange(len(var)):
     d[info[i]] = var[i]

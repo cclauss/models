@@ -92,7 +92,7 @@ def state_barrier_context(state):
 
   This is to prevent assign race conditions.
   """
-  tensors = [x for x in nest.flatten(state) if type(x) == tf.Tensor]
+  tensors = [x for x in nest.flatten(state) if isinstance(x, tf.Tensor)]
   tarray = [x.flow for x in nest.flatten(state) if hasattr(x, "flow")]
   return tf.control_dependencies(tensors + tarray)
 

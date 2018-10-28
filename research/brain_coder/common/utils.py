@@ -381,7 +381,7 @@ class RouletteWheel(object):
       # Load from disk.
       with tf.gfile.OpenFast(save_file, 'r') as f:
         count = 0
-        while 1:
+        while True:
           try:
             obj, weight, key = cPickle.load(f)
           except EOFError:

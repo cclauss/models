@@ -121,7 +121,7 @@ def _get_summary_image(estimator, test_images_np):
           ((dataset_imgs, dataset_lbls), unused_tensor))
 
     prediction_iterable = estimator.predict(test_input_fn)
-    predictions = [prediction_iterable.next() for _ in xrange(num_domains)]
+    predictions = [next(prediction_iterable) for _ in xrange(num_domains)]
     transform_row = np.concatenate([img_np] + predictions, 1)
     img_rows.append(transform_row)
 

@@ -735,7 +735,7 @@ def simple_add_summaries(summarize_ops, summarize_names,
 def add_summary_ops(m, summarize_ops, summarize_names, to_aggregate=None,
                     summary_key='summaries',
                     print_summary_key='print_summaries', prefix=''):
-  if type(to_aggregate) != list:
+  if not isinstance(to_aggregate, list):
     to_aggregate = [to_aggregate for _ in summarize_ops]
   
   # set up aggregating metrics
@@ -803,7 +803,7 @@ def get_default_summary_ops():
 def simple_summaries(summarize_ops, summarize_names, mode, to_aggregate=False,
                      scope_name='summary'):
 
-  if type(to_aggregate) != list:
+  if not isinstance(to_aggregate, list):
     to_aggregate = [to_aggregate for _ in summarize_ops]
   
   summary_key = '{:s}_summaries'.format(mode)

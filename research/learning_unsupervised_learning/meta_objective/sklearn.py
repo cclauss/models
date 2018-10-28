@@ -113,7 +113,8 @@ class SKLearn(meta_obj_utils.MultiTrialMetaObjective):
       teY = tf.to_int64(te_batch.label)
       teY_shape = teY.shape.as_list()
 
-      def blackbox((trX, trY, teX, teY)):
+      def blackbox(xxx_todo_changeme):
+        (trX, trY, teX, teY) = xxx_todo_changeme
         trY = tf.to_int32(tf.rint(trY))
         teY = tf.to_int32(tf.rint(teY))
         tf_fn = build_fit(

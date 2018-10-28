@@ -328,7 +328,7 @@ def _next_comma(string, start_index):
 
 def _comma_iterator(string):
   index = 0
-  while 1:
+  while True:
     next_index = _next_comma(string, index)
     if next_index == -1:
       yield string[index:]

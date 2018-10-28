@@ -22,6 +22,7 @@
    in each environment. For more details, refer:
    http://cs.unc.edu/~ammirato/active_vision_dataset_website/.
 """
+from __future__ import print_function
 import tensorflow as tf
 import collections
 import copy
@@ -937,7 +938,7 @@ class ActiveVisionDatasetEnv(task_env.TaskEnv):
                               self._cur_graph.id_to_index[image_id],
                               super_source)
     except:
-      print 'path not found, image_id = ', self._cur_world, self._cur_image_id
+      print('path not found, image_id = ', self._cur_world, self._cur_image_id)
       raise
     return path[:-1]
 
@@ -996,10 +997,10 @@ class ActiveVisionDatasetEnv(task_env.TaskEnv):
     """
     obs = self._reset_env(new_world=world, new_goal=goal)
     if not obs:
-      print '{} is not availble in {}'.format(goal, world)
+      print('{} is not availble in {}'.format(goal, world))
       return True
     for image_id in self._world_id_dict[self._cur_world]:
-      print 'check image_id = {}'.format(image_id)
+      print('check image_id = {}'.format(image_id))
       self._cur_image_id = image_id
       path = self.path_to_goal()
       actions = []

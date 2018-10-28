@@ -175,7 +175,7 @@ def evaluate(program_str, input_names_to_vals, default="ERROR"):
   for name, val in input_names_to_vals.iteritems():
     exec_str += name + " = " + str(val) + "; "
   exec_str += program_str
-  if type(exec_str) is list:
+  if isinstance(exec_str, list):
     exec_str = "".join(exec_str)
 
   with stdoutIO() as s:

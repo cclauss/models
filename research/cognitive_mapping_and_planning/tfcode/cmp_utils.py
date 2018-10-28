@@ -88,7 +88,7 @@ def rotate_preds(loc_on_map, relative_theta, map_size, preds,
                  output_valid_mask):
   with tf.name_scope('rotate'):
     flow_op = tf_utils.get_flow(loc_on_map, relative_theta, map_size=map_size)
-    if type(preds) != list:
+    if not isinstance(preds, list):
       rotated_preds, valid_mask_warps = tf_utils.dense_resample(preds, flow_op,
                                                                 output_valid_mask)
     else:
@@ -138,7 +138,7 @@ def fr_v2(x, output_neurons, inside_neurons, is_training, name='fr',
   Outputs
     fr map:     NxHxWx(output_neurons)
   """
-  if type(stride) != list:
+  if not isinstance(stride, list):
     stride = [stride]
   with slim.arg_scope(resnet_v2.resnet_utils.resnet_arg_scope(
       is_training=is_training, weight_decay=wt_decay)):
